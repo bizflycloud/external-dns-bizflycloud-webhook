@@ -1,4 +1,4 @@
-package ionos
+package bizflycloud
 
 import (
 	"strings"
