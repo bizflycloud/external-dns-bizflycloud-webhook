@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 
-	"github.com/ionos-cloud/external-dns-ionos-webhook/cmd/webhook/init/configuration"
-	"github.com/ionos-cloud/external-dns-ionos-webhook/cmd/webhook/init/dnsprovider"
-	"github.com/ionos-cloud/external-dns-ionos-webhook/cmd/webhook/init/logging"
-	"github.com/ionos-cloud/external-dns-ionos-webhook/cmd/webhook/init/server"
-	"github.com/ionos-cloud/external-dns-ionos-webhook/pkg/webhook"
+	"github.com/bizflycloud/external-dns-bizflycloud-webhook/cmd/webhook/init/configuration"
+	"github.com/bizflycloud/external-dns-bizflycloud-webhook/cmd/webhook/init/dnsprovider"
+	"github.com/bizflycloud/external-dns-bizflycloud-webhook/cmd/webhook/init/logging"
+	"github.com/bizflycloud/external-dns-bizflycloud-webhook/cmd/webhook/init/server"
+	"github.com/bizflycloud/external-dns-bizflycloud-webhook/pkg/webhook"
 	log "github.com/sirupsen/logrus"
 )
 

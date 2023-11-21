@@ -1,15 +1,14 @@
-module github.com/ionos-cloud/external-dns-ionos-webhook
+module github.com/bizflycloud/external-dns-bizflycloud-webhook
 
 go 1.20
 
 require (
+	github.com/bizflycloud/gobizfly v1.0.18
 	github.com/caarlos0/env/v8 v8.0.0
 	github.com/go-chi/chi/v5 v5.0.8
 	github.com/golang/mock v1.6.0
 	github.com/golangci/golangci-lint v1.53.3
 	github.com/google/go-licenses v1.6.0
-	github.com/ionos-cloud/sdk-go-dns v1.1.1
-	github.com/ionos-developer/dns-sdk-go v0.0.5
 	github.com/sirupsen/logrus v1.9.3
 	github.com/stretchr/testify v1.8.4
 	gotest.tools/gotestsum v1.10.0
@@ -33,7 +32,6 @@ require (
 	github.com/ashanbrown/forbidigo v1.5.3 // indirect
 	github.com/ashanbrown/makezero v1.1.1 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
-	github.com/bizflycloud/gobizfly v1.0.18 // indirect
 	github.com/bkielbasa/cyclop v1.2.1 // indirect
 	github.com/blizzy78/varnamelen v0.8.0 // indirect
 	github.com/bombsimon/wsl/v3 v3.4.0 // indirect
@@ -192,13 +190,11 @@ require (
 	golang.org/x/exp/typeparams v0.0.0-20230224173230-c95f2b4c22f2 // indirect
 	golang.org/x/mod v0.13.0 // indirect
 	golang.org/x/net v0.16.0 // indirect
-	golang.org/x/oauth2 v0.6.0 // indirect
 	golang.org/x/sync v0.4.0 // indirect
 	golang.org/x/sys v0.13.0 // indirect
 	golang.org/x/term v0.13.0 // indirect
 	golang.org/x/text v0.13.0 // indirect
 	golang.org/x/tools v0.14.0 // indirect
-	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/protobuf v1.30.0 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/src-d/go-billy.v4 v4.3.2 // indirect

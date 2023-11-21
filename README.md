@@ -16,7 +16,7 @@ see[deployment instructions](#kubernetes-deployment).
 ## Kubernetes Deployment
 
 The IONOS webhook is provided as a regular Open Container Initiative (OCI) image released in
-the [GitHub container registry](https://github.com/ionos-cloud/external-dns-ionos-webhook/pkgs/container/external-dns-ionos-webhook).
+the [GitHub container registry](https://github.com/bizflycloud/external-dns-bizflycloud-webhook/pkgs/container/external-dns-ionos-webhook).
 The deployment can be performed in every way Kubernetes supports.
 The following example shows the deployment as
 a [sidecar container](https://kubernetes.io/docs/concepts/workloads/pods/#workload-resources-for-managing-pods) in the

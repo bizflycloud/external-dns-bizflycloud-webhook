@@ -7,10 +7,10 @@ import (
 
 	"github.com/caarlos0/env/v8"
 
-	"github.com/ionos-cloud/external-dns-ionos-webhook/cmd/webhook/init/configuration"
-	"github.com/ionos-cloud/external-dns-ionos-webhook/internal/bizflycloud"
-	"github.com/ionos-cloud/external-dns-ionos-webhook/pkg/endpoint"
-	"github.com/ionos-cloud/external-dns-ionos-webhook/pkg/provider"
+	"github.com/bizflycloud/external-dns-bizflycloud-webhook/cmd/webhook/init/configuration"
+	"github.com/bizflycloud/external-dns-bizflycloud-webhook/internal/bizflycloud"
+	"github.com/bizflycloud/external-dns-bizflycloud-webhook/pkg/endpoint"
+	"github.com/bizflycloud/external-dns-bizflycloud-webhook/pkg/provider"
 	log "github.com/sirupsen/logrus"
 )
 

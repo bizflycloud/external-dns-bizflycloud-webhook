@@ -3,10 +3,10 @@ package dnsprovider
 // import (
 // 	"testing"
 
-// 	"github.com/ionos-cloud/external-dns-ionos-webhook/internal/ionoscloud"
+// 	"github.com/bizflycloud/external-dns-bizflycloud-webhook/internal/ionoscloud"
 
-// 	"github.com/ionos-cloud/external-dns-ionos-webhook/cmd/webhook/init/configuration"
-// 	"github.com/ionos-cloud/external-dns-ionos-webhook/internal/biz"
+// 	"github.com/bizflycloud/external-dns-bizflycloud-webhook/cmd/webhook/init/configuration"
+// 	"github.com/bizflycloud/external-dns-bizflycloud-webhook/internal/biz"
 // 	log "github.com/sirupsen/logrus"
 // 	"github.com/stretchr/testify/assert"
 // )

@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/ionos-cloud/external-dns-ionos-webhook/pkg/endpoint"
-	"github.com/ionos-cloud/external-dns-ionos-webhook/pkg/plan"
-	"github.com/ionos-cloud/external-dns-ionos-webhook/pkg/provider"
+	"github.com/bizflycloud/external-dns-bizflycloud-webhook/pkg/endpoint"
+	"github.com/bizflycloud/external-dns-bizflycloud-webhook/pkg/plan"
+	"github.com/bizflycloud/external-dns-bizflycloud-webhook/pkg/provider"
 	log "github.com/sirupsen/logrus"
 )
 

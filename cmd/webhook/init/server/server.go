@@ -14,9 +14,9 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/ionos-cloud/external-dns-ionos-webhook/cmd/webhook/init/configuration"
+	"github.com/bizflycloud/external-dns-bizflycloud-webhook/cmd/webhook/init/configuration"
 
-	"github.com/ionos-cloud/external-dns-ionos-webhook/pkg/webhook"
+	"github.com/bizflycloud/external-dns-bizflycloud-webhook/pkg/webhook"
 )
 
 // Init server initialization function
