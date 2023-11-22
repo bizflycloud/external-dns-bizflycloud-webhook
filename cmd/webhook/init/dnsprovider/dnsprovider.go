@@ -14,10 +14,6 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-const (
-	webtokenIonosISSValue = "ionoscloud"
-)
-
 func Init(config configuration.Config) (provider.Provider, error) {
 	var domainFilter endpoint.DomainFilter
 	createMsg := "Creating BIZFLYCLOUD provider with "

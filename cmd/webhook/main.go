@@ -18,7 +18,7 @@ const banner = `
  | |_) | | / /_|  _| | |___| |   | |___| |__| |_| | |_| | |_| |
  |____/___/____|_|   |_____|_|    \____|_____\___/ \___/|____/ 
 
- external-dns-ionos-webhook
+ external-dns-bizflycloud-webhook
  version: %s (%s)
 
 `
