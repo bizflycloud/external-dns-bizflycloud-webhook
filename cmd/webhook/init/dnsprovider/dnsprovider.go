@@ -44,7 +44,7 @@ func Init(config configuration.Config) (provider.Provider, error) {
 	log.Info(createMsg)
 	bizflycloudConfig := bizflycloud.Configuration{}
 	if err := env.Parse(&bizflycloudConfig); err != nil {
-		return nil, fmt.Errorf("reading ionos ionosConfig failed: %v", err)
+		return nil, fmt.Errorf("reading bizflycloudConfig failed: %v", err)
 	}
 	return bizflycloud.NewBizflyCloudProvider(domainFilter, &bizflycloudConfig)
 }
