@@ -92,12 +92,18 @@ func getCreateDNSRecordParam(change bizflyCloudChange) gobizfly.CreateNormalReco
 
 // NewBizflyCloudProvider initializes a new BizflyCloud DNS based Provider.
 func NewBizflyCloudProvider(domainFilter endpoint.DomainFilter, config *Configuration) (provider.Provider, error) {
+	fmt.Printf("%+v", config)
 	client, err := gobizfly.NewClient(gobizfly.WithRegionName(config.Region))
 	if err != nil {
 		return nil, err
 	}
 	ctx := context.Background()
-	token, err := client.Token.Create(ctx, &gobizfly.TokenCreateRequest{AuthMethod: auth_method, AppCredID: config.APICredentialId, AppCredSecret: config.APICredentialSecret})
+	token, err := client.Token.Create(
+		ctx,
+		&gobizfly.TokenCreateRequest{
+			AuthMethod:    auth_method,
+			AppCredID:     config.APICredentialId,
+			AppCredSecret: config.APICredentialSecret})
 
 	if err != nil {
 		return nil, err
