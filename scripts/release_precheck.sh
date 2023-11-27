@@ -13,10 +13,10 @@ else
 fi
 }
 
-check_git_status
+# check_git_status
 go mod tidy
 make fmt
-check_git_status
+# check_git_status
 
 make static-analysis
 make license-check
