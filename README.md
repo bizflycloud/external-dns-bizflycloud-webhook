@@ -16,7 +16,7 @@ see[deployment instructions](#kubernetes-deployment).
 ## Kubernetes Deployment
 
 The IONOS webhook is provided as a regular Open Container Initiative (OCI) image released in
-the [GitHub container registry](https://github.com/bizflycloud/external-dns-bizflycloud-webhook/pkgs/container/external-dns-ionos-webhook).
+the [GitHub container registry](https://github.com/bizflycloud/external-dns-bizflycloud-webhook/pkgs/container/external-dns-bfc-webhook).
 The deployment can be performed in every way Kubernetes supports.
 The following example shows the deployment as
 a [sidecar container](https://kubernetes.io/docs/concepts/workloads/pods/#workload-resources-for-managing-pods) in the
@@ -44,7 +44,7 @@ extraArgs:
 
 sidecars:
   - name: ionos-webhook
-    image: ghcr.io/ionos-cloud/external-dns-ionos-webhook:v0.6.0
+    image: ghcr.io/ionos-cloud/external-dns-bfc-webhook:v0.6.0
     ports:
       - containerPort: 8888
         name: http
@@ -89,7 +89,7 @@ by [sigstores transparency log](https://github.com/sigstore/rekor).
 
 ```shell
 export RELEASE_VERSION=latest
-cosign verify --insecure-ignore-tlog --key cosign.pub ghcr.io/ionos-cloud/external-dns-ionos-webhook:$RELEASE_VERSION
+cosign verify --insecure-ignore-tlog --key cosign.pub ghcr.io/ionos-cloud/external-dns-bfc-webhook:$RELEASE_VERSION
 ```
 
 ## Development
