@@ -228,7 +228,7 @@ func (p *BizflyCloudProvider) submitChanges(ctx context.Context, changes []*bizf
 				"zone":   zoneID,
 			}
 
-			log.WithFields(logFields).Info("Changing record.")
+			log.WithFields(logFields).Info("Changing record...")
 
 			if p.DryRun {
 				continue
