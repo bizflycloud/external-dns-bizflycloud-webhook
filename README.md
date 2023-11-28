@@ -1,16 +1,16 @@
-# ExternalDNS - GleSYS Webhook
+# ExternalDNS - Bizfly Cloud Webhook
 
-**⚠️ NOTE**: his Webhook was forked and modified from the IONOS Webhook to work with GleSYS:
+**⚠️ NOTE**: his Webhook was forked and modified from the IONOS Webhook to work with Bizfly Cloud:
 https://github.com/ionos-cloud/external-dns-ionos-webhook
 
 ExternalDNS is a Kubernetes add-on for automatically managing
 Domain Name System (DNS) records for Kubernetes services by using different DNS providers.
 By default, Kubernetes manages DNS records internally,
 but ExternalDNS takes this functionality a step further by delegating the management of DNS records to an external DNS
-provider such as GleSYS.  Therefore, the GleSYS webhook allows to manage your
-GleSYS domains inside your kubernetes cluster with [ExternalDNS](https://github.com/kubernetes-sigs/external-dns).
+provider such as Bizfly Cloud.  Therefore, the Bizfly Cloud webhook allows to manage your
+Bizfly Cloud domains inside your kubernetes cluster with [ExternalDNS](https://github.com/kubernetes-sigs/external-dns).
 
-To use ExternalDNS with GleSYS, you need a GleSYS API key with permissions to create and modify DNS records.
+To use ExternalDNS with Bizfly Cloud, you need a Bizfly Cloud API key with permissions to create and modify DNS records.
 
 ### Deployment in Kubernetes
 secret.yml
@@ -19,59 +19,16 @@ secret.yml
 apiVersion: v1
 kind: Secret
 metadata:
-  name: external-dns-glesys
+  name: external-dns-bizflycloud
 stringData:
-  project: "clxxxxxx"
-  accesskey: "xxxxxxxxxxxxxxxxxxxxxx"
+  credential_id: "clxxxxxx"
+  credential_secret: "xxxxxxxxxxxxxxxxxxxxxx"
 ```
 `$ kubectl apply -f secret.yaml`
 
-external-dns-glesys.yaml
+external-dns-bizflycloud.yaml
 
 ```yaml
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: external-dns
-spec:
-  replicas: 1
-  strategy:
-    type: Recreate
-  selector:
-    matchLabels:
-      app: external-dns
-  template:
-    metadata:
-      labels:
-        app: external-dns
-    spec:
-      serviceAccountName: external-dns
-      containers:
-        - name: external-dns
-          image: registry.k8s.io/external-dns/external-dns:v0.14.0
-          args:
-            - --source=service
-            - --source=ingress
-            - --provider=webhook
-
-        - image: ghcr.io/glesys/external-dns-glesys:v0.0.2
-          name: glesys-webhook
-          ports:
-            - containerPort: 8888
-          env:
-            - name: GLESYS_PROJECT
-              valueFrom:
-                secretKeyRef:
-                  name: external-dns-glesys
-                  key: project
-            - name: GLESYS_ACCESS_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: external-dns-glesys
-                  key: accesskey
-
----
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -103,12 +60,56 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: external-dns
-    namespace: default 
+    namespace: default
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: external-dns
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: external-dns
+  template:
+    metadata:
+      labels:
+        app: external-dns
+    spec:
+      serviceAccountName: external-dns
+      containers:
+        - name: external-dns
+          image: registry.k8s.io/external-dns/external-dns:v0.14.0
+          args:
+            - --source=service
+            - --source=ingress
+            - --provider=webhook
+
+        - image: ghcr.io/huyduong2792/external-dns-bizflycloud-webhook:v0.1.2
+          name: bizflycloud-webhook
+          ports:
+            - containerPort: 8888
+          env:
+            - name: BFC_APP_CREDENTIAL_ID
+              valueFrom:
+                secretKeyRef:
+                  name: external-dns-bizflycloud
+                  key: credential_id
+            - name: BFC_APP_CREDENTIAL_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: external-dns-bizflycloud
+                  key: credential_secret
 ```
-`$ kubectl apply -f external-dns-glesys.yaml`
+`$ kubectl apply -f external-dns-bizflycloud.yaml`
 
 
-Example deployment using the external DNS:
+Example nginx deployment using the external DNS:
+
+nginx.yaml
+
 ```yaml
 ---
 apiVersion: apps/v1
@@ -136,8 +137,8 @@ kind: Service
 metadata:
   name: nginx
   annotations:
-    external-dns.alpha.kubernetes.io/internal-hostname: nginxinternal.example.com.
-    external-dns.alpha.kubernetes.io/hostname: nginx.example.com.
+    external-dns.alpha.kubernetes.io/hostname: bfcexample.com.
+    external-dns.alpha.kubernetes.io/ttl: "120" #optional
 
 spec:
   selector:
@@ -149,16 +150,17 @@ spec:
       targetPort: 80
 ```
 
+`$ kubectl apply -f nginx.yaml`
 
 ### Local deployment
 ```bash
-export GLESYS_PROJECT=clxxxxxx
-export GLESYS_ACCESS_KEY=xxxxxxxxxxxxxxxxxxxxxx
+export BFC_APP_CREDENTIAL_ID=xxx
+export BFC_APP_CREDENTIAL_SECRET=xxx
 ```
 
 ```bash
-CGO_ENABLED=0 go build
-./external-dns-glesys
+
+make run
 
 # In another terminal
 curl http://localhost:8888/records -H 'Accept: application/external.dns.webhook+json;version=1'
