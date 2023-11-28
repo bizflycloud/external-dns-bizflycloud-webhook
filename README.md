@@ -24,6 +24,9 @@ stringData:
   credential_id: "clxxxxxx"
   credential_secret: "xxxxxxxxxxxxxxxxxxxxxx"
 ```
+
+The Bizfly Cloud API is a RESTful API based on HTTPS requests and JSON responses. If you are registered with Bizfly Cloud, you can create your credential_id, credential_secret from [here](https://manage.bizflycloud.vn/account/configuration/credential).
+
 `$ kubectl apply -f secret.yaml`
 
 external-dns-bizflycloud.yaml
