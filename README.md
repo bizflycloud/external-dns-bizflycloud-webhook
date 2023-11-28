@@ -21,8 +21,8 @@ kind: Secret
 metadata:
   name: external-dns-bizflycloud
 stringData:
-  credential_id: "clxxxxxx"
-  credential_secret: "xxxxxxxxxxxxxxxxxxxxxx"
+  credential_id: "xxx"
+  credential_secret: "xxx"
 ```
 
 The Bizfly Cloud API is a RESTful API based on HTTPS requests and JSON responses. If you are registered with Bizfly Cloud, you can create your credential_id, credential_secret from [here](https://manage.bizflycloud.vn/account/configuration/credential).
