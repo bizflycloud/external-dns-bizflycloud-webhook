@@ -90,7 +90,7 @@ spec:
             - --source=ingress
             - --provider=webhook
 
-        - image: ghcr.io/huyduong2792/external-dns-bizflycloud-webhook:v0.1.2
+        - image: ghcr.io/bizflycloud/external-dns-bizflycloud-webhook:v0.1.0
           name: bizflycloud-webhook
           ports:
             - containerPort: 8888
